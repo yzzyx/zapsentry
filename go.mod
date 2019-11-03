@@ -1,4 +1,4 @@
-module github.com/yzzyx/zaptest
+module github.com/yzzyx/zapsentry
 
 go 1.13
 
