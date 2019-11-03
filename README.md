@@ -14,19 +14,21 @@ Installation:
 	
 Usage:
 
-	client, err := sentry.NewClient(sentry.ClientOptions{Dsn: "https://xxxx:yyyy@127.0.0.1/1"})
-	scope := sentry.NewScope()
-	hub := sentry.NewHub(client, scope)
-	
-	sentryCore, err := zapsentry.NewCore(hub, zap.InfoLevel)
-	if err != nil {
-		return nil, err
-	}
-	
-	logger := zap.New(core)
-	
-	// Log to sentry with tag 'version' set to 1, and with additional field "somefield" set to "somevalue"
-	logger.Error("my error", zap.Int("#version", 1), zap.String("somefield", "somevalue"))
+```go
+client, err := sentry.NewClient(sentry.ClientOptions{Dsn: "https://xxxx:yyyy@127.0.0.1/1"})
+scope := sentry.NewScope()
+hub := sentry.NewHub(client, scope)
+
+sentryCore, err := zapsentry.NewCore(hub, zap.InfoLevel)
+if err != nil {
+	return nil, err
+}
+
+logger := zap.New(core)
+
+// Log to sentry with tag 'version' set to 1, and with additional field "somefield" set to "somevalue"
+logger.Error("my error", zap.Int("#version", 1), zap.String("somefield", "somevalue"))
+```
 	
 Advanced setup
 --------------
