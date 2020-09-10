@@ -102,7 +102,7 @@ func (core *SentryCore) Check(entry zapcore.Entry, checked *zapcore.CheckedEntry
 func (core *SentryCore) Write(entry zapcore.Entry, fields []zapcore.Field) error {
 	event := sentry.NewEvent()
 	event.Message = entry.Message
-	event.Timestamp = entry.Time.Unix()
+	event.Timestamp = time.Unix(entry.Time.Unix(), 0)
 	event.Level = zapToSentryLevels[entry.Level]
 	event.Logger = entry.LoggerName
 
